@@ -8,9 +8,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import com.hokumus.course.project.utils.dao.IDbServices;
+import com.heo.sportclub.project.utils.HBUtils;
 
-public class DbServicesBase<T> implements IDbServices<T>{
+public class DbServicessBase<T> implements IDBServices<T>{
 
 	
 	private Session ss ;
@@ -22,7 +22,7 @@ public class DbServicesBase<T> implements IDbServices<T>{
 	
 	
 	private void getSession() {
-		ss=MyHBUtil.getSessionFactory().openSession();
+		ss=HBUtils.getSessionFactory().openSession();
 		tt = ss.beginTransaction();
 	}
 	
@@ -128,3 +128,5 @@ public class DbServicesBase<T> implements IDbServices<T>{
 			return false;
 		}
 	}
+
+}

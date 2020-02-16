@@ -1,7 +1,7 @@
 package com.heo.sportclub.project.utils;
 
-import javax.security.auth.login.Configuration;
-
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
 public class HBUtils {
 	
