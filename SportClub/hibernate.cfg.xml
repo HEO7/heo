@@ -1,0 +1,41 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+	
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- DB Dialect -->
+   		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/COURSEDB</property> <!-- BD Mane -->
+   		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property> <!-- DB Driver -->
+   		<property name="hibernate.connection.username">postgres</property> <!-- DB User -->
+   		<property name="hibernate.connection.password">7777</property> <!-- DB Password -->
+   		
+   		
+   		<property name="hibernate.hbm2ddl.auto">update</property> <!-- create / create-drop / update -->
+		<property name="hibernate.show_sql">true</property> <!-- Show SQL in console -->
+		<mapping class="com.hokumus.course.project.models.CourseUsers"/>
+		<mapping class="com.hokumus.course.project.models.inventory.Inventory"/>
+		<mapping class="com.hokumus.course.project.models.student.Student"/>
+		<mapping class="com.hokumus.course.project.models.management.Courses"/>
+		<mapping class="com.hokumus.course.project.models.management.LessonClass"/>
+		<mapping class="com.hokumus.course.project.models.CourseUsers"/>
+		<mapping class="com.hokumus.course.project.models.management.Courses"/>
+		<mapping class="com.hokumus.course.project.models.management.LessonClass"/>
+		<mapping class="com.hokumus.course.project.models.accounting.Debt"/>
+		<mapping class="com.hokumus.course.project.models.accounting.Bill"/>
+		<mapping class="com.hokumus.course.project.models.teacher.Teacher"/>
+		<mapping class="com.hokumus.course.project.models.management.Groups"/>
+		<mapping class="com.hokumus.course.project.models.management.Days"/>
+		<mapping class="com.hokumus.course.project.models.management.GroupDays"/>
+		<mapping class="com.hokumus.course.project.models.accounting.Incomings"/>
+		<mapping class="com.hokumus.course.project.models.inventory.IronHead"/>
+		<mapping class="com.hokumus.course.project.models.accounting.Expenses"/>
+		<mapping class="com.hokumus.course.project.models.humenresources.Employee"/>
+		<mapping class="com.hokumus.course.project.models.homeworks.Odev"/>
+		<mapping class="com.hokumus.course.project.models.accounting.Purchasings"/>
+		<mapping class="com.hokumus.course.project.models.accounting.Salarys"/>
+		
+		
+	</session-factory>
+</hibernate-configuration>
