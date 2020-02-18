@@ -13,9 +13,11 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
 
 public class MainScreen extends JFrame {
 	private JTable tableuye;
+	private JTextField textField;
 	
 	public MainScreen() {
 		
@@ -77,6 +79,21 @@ public class MainScreen extends JFrame {
 		JButton btncýkýs = new JButton("\u00C7IKI\u015E");
 		btncýkýs.setBounds(456, 486, 89, 23);
 		getContentPane().add(btncýkýs);
+		
+		JLabel lbluyeAra = new JLabel("\u00DCye Ara");
+		lbluyeAra.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbluyeAra.setForeground(new Color(255, 255, 255));
+		lbluyeAra.setBounds(461, 11, 46, 14);
+		getContentPane().add(lbluyeAra);
+		
+		textField = new JTextField();
+		textField.setBounds(408, 31, 166, 20);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JButton btnAra = new JButton("Ara");
+		btnAra.setBounds(441, 62, 89, 23);
+		getContentPane().add(btnAra);
 		
 	}
 }
