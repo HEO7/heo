@@ -1,14 +1,20 @@
 package com.heo.sportclub.project.ui;
 
 import javax.swing.JFrame;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+
 import javax.swing.UIManager;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
 
@@ -17,6 +23,7 @@ public class LoginEkran extends JFrame {
 	private JTextField txtpassword;
 	
 	public LoginEkran() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\halil.ozcan\\git\\heo\\SportClub\\img\\icon.jpg"));
 	
 		
 		initialize();
@@ -32,7 +39,10 @@ public class LoginEkran extends JFrame {
 		setBounds(700, 250, 300, 350);
 		getContentPane().setLayout(null);
 		getContentPane().setFont(new Font("Tahoma", Font.BOLD, 10));
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\halil.ozcan\\git\\heo\\SportClub\\img\\icon.jpg"));
+		
+			
+		
+	
 		getContentPane().setBackground(new Color(0, 153, 153));
 		
 		JButton btnIptal = new JButton("\u0130ptal");
