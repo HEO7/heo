@@ -84,7 +84,7 @@ public class AntrenmanProgram2 extends JFrame {
 		
 		JTextPane txtprgm1 = new JTextPane();
 		txtprgm1.setEditable(false);
-		txtprgm1.setText("123123123\r\n345346534\r\n87687689678\r\n09808908\r\n879768678");
+		txtprgm1.setText("Front Squat 3x5\r\nSquat Asistan\u0131 3x8-12\r\nOverhead Press 3x5\r\nOverhead Press Asistan\u0131 3x8-12\r\nBench Press Asistan\u0131 3x8-12\r\nDeadlift 1x5\r\n");
 		txtprgm1.setBounds(10, 34, 265, 322);
 		getContentPane().add(txtprgm1);
 		

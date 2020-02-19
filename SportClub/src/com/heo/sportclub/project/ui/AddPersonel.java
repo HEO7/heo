@@ -18,7 +18,6 @@ public class AddPersonel extends JFrame {
 	private JTextField txtsurname;
 	private JTextField txtphone;
 	private JTextField txtidentify;
-	private JTextField txtbolum;
 	
 	public AddPersonel() {
 		
@@ -80,12 +79,6 @@ public class AddPersonel extends JFrame {
 		lblEitim.setBounds(10, 348, 64, 14);
 		getContentPane().add(lblEitim);
 		
-		JLabel lblBlm = new JLabel("B\u00F6l\u00FCm");
-		lblBlm.setForeground(Color.WHITE);
-		lblBlm.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblBlm.setBounds(10, 391, 64, 14);
-		getContentPane().add(lblBlm);
-		
 		JLabel lblBalamaTarihi = new JLabel("Ba\u015Flama Tarihi");
 		lblBalamaTarihi.setForeground(Color.WHITE);
 		lblBalamaTarihi.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -133,11 +126,6 @@ public class AddPersonel extends JFrame {
 		JComboBox cmbboxedu = new JComboBox();
 		cmbboxedu.setBounds(117, 345, 74, 20);
 		getContentPane().add(cmbboxedu);
-		
-		txtbolum = new JTextField();
-		txtbolum.setBounds(117, 388, 86, 20);
-		getContentPane().add(txtbolum);
-		txtbolum.setColumns(10);
 		
 	}
 }

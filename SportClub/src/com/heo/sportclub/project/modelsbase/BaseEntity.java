@@ -1,4 +1,4 @@
-package com.heo.sportclub.project.models.base;
+package com.heo.sportclub.project.modelsbase;
 
 import java.util.Date;
 

@@ -23,7 +23,7 @@ public class LoginEkran extends JFrame {
 	private JTextField txtpassword;
 	
 	public LoginEkran() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\halil.ozcan\\git\\heo\\SportClub\\img\\icon.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\heo\\git\\heo\\SportClub\\img\\icon.jpg"));
 	
 		
 		initialize();
