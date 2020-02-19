@@ -18,12 +18,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 
-public class AntrenmanProgram extends JFrame {
+public class AntrenmanProgram3 extends JFrame {
 
 	private JComponent componenet_name;
 	
 
-	public AntrenmanProgram() {
+	public AntrenmanProgram3() {
 
 		
 		initialize();
@@ -49,6 +49,10 @@ public class AntrenmanProgram extends JFrame {
 		btnProgram.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				AntrenmanProgram ap = new AntrenmanProgram();
+				ap.setVisible(true);
+				dispose();
+				
 				
 			}
 		});
@@ -58,10 +62,10 @@ public class AntrenmanProgram extends JFrame {
 		JButton btnProgram_1 = new JButton("Program-2");
 		btnProgram_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AntrenmanProgram2 ap2 = new AntrenmanProgram2();
-				ap2.setVisible(true);
-				dispose();
-		
+				
+			AntrenmanProgram2 anp2 = new AntrenmanProgram2();
+			anp2.setVisible(true);
+			dispose();
 				
 			}
 		});
@@ -82,22 +86,22 @@ public class AntrenmanProgram extends JFrame {
 		getContentPane().add(btnProgram_2);
 		
 		JTextPane txtprgm1 = new JTextPane();
-		txtprgm1.setText("sadasdas\r\ngfgfdgdf\r\ncxvcxzvcx\r\nerwerwe\r\nhyghfh");
 		txtprgm1.setEditable(false);
+		txtprgm1.setText("!^+^'%+^\r\n^+%+^&^\r\n!^!'^(/)(=\r\n>Z>'^&(/&\r\n");
 		txtprgm1.setBounds(10, 34, 265, 322);
 		getContentPane().add(txtprgm1);
 		
 		JButton btnYazdr = new JButton("Yazd\u0131r");
 		btnYazdr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				printle();
+				printer();
 			}
 		});
 		btnYazdr.setBounds(172, 393, 89, 23);
 		getContentPane().add(btnYazdr);
 
 	}
-	public void printle() {
+	public void printer() {
 		
 		 
 

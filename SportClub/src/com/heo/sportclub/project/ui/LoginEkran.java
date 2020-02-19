@@ -48,13 +48,19 @@ public class LoginEkran extends JFrame {
 		JButton btnIptal = new JButton("\u0130ptal");
 		btnIptal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+			System.exit(0);
 			}
 		});
 		btnIptal.setBounds(158, 247, 89, 23);
 		getContentPane().add(btnIptal);
 		
 		JButton btnGiris = new JButton("Giri\u015F");
+		btnGiris.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainScreen ms = new MainScreen();
+				ms.setVisible(true);
+			}
+		});
 		btnGiris.setBounds(31, 247, 89, 23);
 		getContentPane().add(btnGiris);
 		

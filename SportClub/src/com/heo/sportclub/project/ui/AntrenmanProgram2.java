@@ -18,12 +18,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 
-public class AntrenmanProgram extends JFrame {
+public class AntrenmanProgram2 extends JFrame {
 
 	private JComponent componenet_name;
 	
 
-	public AntrenmanProgram() {
+	public AntrenmanProgram2() {
 
 		
 		initialize();
@@ -49,6 +49,10 @@ public class AntrenmanProgram extends JFrame {
 		btnProgram.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				AntrenmanProgram ap = new AntrenmanProgram();
+				ap.setVisible(true);
+				dispose();
+				
 				
 			}
 		});
@@ -58,10 +62,8 @@ public class AntrenmanProgram extends JFrame {
 		JButton btnProgram_1 = new JButton("Program-2");
 		btnProgram_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AntrenmanProgram2 ap2 = new AntrenmanProgram2();
-				ap2.setVisible(true);
-				dispose();
-		
+				
+			
 				
 			}
 		});
@@ -75,15 +77,14 @@ public class AntrenmanProgram extends JFrame {
 				AntrenmanProgram3 ap3 = new AntrenmanProgram3();
 				ap3.setVisible(true);
 				dispose();
-				
 			}
 		});
 		btnProgram_2.setBounds(186, 0, 89, 23);
 		getContentPane().add(btnProgram_2);
 		
 		JTextPane txtprgm1 = new JTextPane();
-		txtprgm1.setText("sadasdas\r\ngfgfdgdf\r\ncxvcxzvcx\r\nerwerwe\r\nhyghfh");
 		txtprgm1.setEditable(false);
+		txtprgm1.setText("123123123\r\n345346534\r\n87687689678\r\n09808908\r\n879768678");
 		txtprgm1.setBounds(10, 34, 265, 322);
 		getContentPane().add(txtprgm1);
 		

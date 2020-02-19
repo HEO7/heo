@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainScreen extends JFrame {
 	private JTable tableuye;
@@ -43,15 +45,43 @@ public class MainScreen extends JFrame {
 		menuBar.add(mnMenu);
 		
 		JMenuItem mnýtmuyekayit = new JMenuItem("\u00DCYE KAYIT");
+		mnýtmuyekayit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				MemberRegister mr = new MemberRegister();
+				mr.setVisible(true);
+				
+			}
+		});
 		mnMenu.add(mnýtmuyekayit);
 		
 		JMenuItem mnýtmPersonelKayt = new JMenuItem("PERSONEL KAYIT");
+		mnýtmPersonelKayt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				AddPersonel adpe = new AddPersonel();
+				adpe.setVisible(true);
+			}
+		});
 		mnMenu.add(mnýtmPersonelKayt);
 		
 		JMenuItem mnýtmAntrenmanProgram = new JMenuItem("ANTRENMAN PROGRAMI");
+		mnýtmAntrenmanProgram.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				AntrenmanProgram anap = new AntrenmanProgram();
+				anap.setVisible(true);
+			}
+		});
 		mnMenu.add(mnýtmAntrenmanProgram);
 		
 		JMenuItem mnýtmk = new JMenuItem("\u00C7IKI\u015E");
+		mnýtmk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				
+			}
+		});
 		mnMenu.add(mnýtmk);
 		
 		JLabel lbluyeler = new JLabel("\u00DCYELER");
@@ -77,6 +107,11 @@ public class MainScreen extends JFrame {
 		getContentPane().add(btnuyesil);
 		
 		JButton btncýkýs = new JButton("\u00C7IKI\u015E");
+		btncýkýs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btncýkýs.setBounds(456, 486, 89, 23);
 		getContentPane().add(btncýkýs);
 		
