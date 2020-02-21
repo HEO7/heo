@@ -1,29 +1,43 @@
 package com.heo.sportclub.project.ui;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
-import java.awt.Choice;
-import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
+import com.heo.sportclub.project.dao.DbServicessBase;
+import com.heo.sportclub.project.models.Members;
+import com.toedter.calendar.JDateChooser;
 
 public class MemberRegister extends JFrame {
+	private Long selecteditemid;
 	private JTextField txtad;
 	private JTextField txtsoyad;
-	private JTextField txtdogtar;
+	private JDateChooser dogumtarihi;
+	private JDateChooser kayittarihi;
 	private JTextField txtkimlik;
 	private JTextField txtgsm;
-	private JTextField txthasta;
+	private JTextField txtmail;
 	private JTextField txtyas;
 	private JTextField txtboy;
 	private JTextField txtkilo;
 	private JTextField txtad1;
 	private JTextField txtsoyad1;
 	private JTextField txttel1;
+	private JTextArea txtareadres;
+	private JComboBox cmbboxcinsiyet;
+	private JComboBox cmbboxprogramsec;
+	private JComboBox cmbboxuyesure;
+	
 	
 	public MemberRegister() {
 		
@@ -76,11 +90,11 @@ public class MemberRegister extends JFrame {
 		lblAdres.setBounds(21, 202, 46, 14);
 		getContentPane().add(lblAdres);
 		
-		JLabel lblHastalk = new JLabel("Hastal\u0131k");
-		lblHastalk.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblHastalk.setForeground(new Color(255, 255, 255));
-		lblHastalk.setBounds(21, 254, 46, 14);
-		getContentPane().add(lblHastalk);
+		JLabel lblemail = new JLabel("E-mail");
+		lblemail.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblemail.setForeground(new Color(255, 255, 255));
+		lblemail.setBounds(21, 254, 46, 14);
+		getContentPane().add(lblemail);
 		
 		JLabel lblCinsiyet = new JLabel("Cinsiyet");
 		lblCinsiyet.setForeground(Color.WHITE);
@@ -157,10 +171,54 @@ public class MemberRegister extends JFrame {
 		getContentPane().add(lblTelefon);
 		
 		JButton btnKaydet = new JButton("KAYDET");
+		btnKaydet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DbServicessBase<Members> memdao = new DbServicessBase<Members>();
+				DefaultComboBoxModel model = new DefaultComboBoxModel();
+				cmbboxcinsiyet.setModel(model);
+				cmbboxprogramsec.setModel(model);
+				cmbboxuyesure.setModel(model);
+				Members kaydet = new Members();
+				
+				kaydet.setId(selecteditemid);
+				kaydet.setUyeadi(txtad.getText());
+				kaydet.setUyesoyad(txtsoyad.getText());
+			    kaydet.setDogumtarihi(dogumtarihi.getDate());
+			    kaydet.setKimlikno(txtkimlik.getText());
+			    kaydet.setGsm(txtgsm.getText());
+			    kaydet.setAdres(txtareadres.getText());
+			    kaydet.setEmail(txtmail.getText());
+			    kaydet.setCinsiyet(cmbboxcinsiyet.getSelectedItem().toString());
+			    kaydet.setYas(new Integer(txtyas.getText().toString()));
+			    kaydet.setBoy(new Integer(txtboy.getText().toString()));
+			    kaydet.setKilo(new Integer(txtkilo.getText().toString()));
+			    kaydet.setKayittarihi(kayittarihi.getDate());
+			    kaydet.setAcilad(txtad1.getText());
+			    kaydet.setAcilsoyad(txtsoyad1.getText());
+			    kaydet.setAciltel(txttel1.getText());
+			    kaydet.setProgram(cmbboxprogramsec.getSelectedItem().toString());
+			    kaydet.setUyeliksure(cmbboxuyesure.getSelectedItem().toString());
+			    			    
+			    if (memdao.save(kaydet)) {
+					JOptionPane.showMessageDialog(MemberRegister.this, "Kayýt Baþarýlý");
+			    	
+				}
+			    else {
+			    	JOptionPane.showMessageDialog(MemberRegister.this, "Kayýt Baþarýsýz.");
+				}
+			    
+				
+			}
+		});
 		btnKaydet.setBounds(38, 504, 89, 23);
 		getContentPane().add(btnKaydet);
 		
 		JButton btncýkýs = new JButton("\u00C7IKI\u015E");
+		btncýkýs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btncýkýs.setBounds(194, 504, 89, 23);
 		getContentPane().add(btncýkýs);
 		
@@ -174,10 +232,10 @@ public class MemberRegister extends JFrame {
 		getContentPane().add(txtsoyad);
 		txtsoyad.setColumns(10);
 		
-		txtdogtar = new JTextField();
-		txtdogtar.setBounds(105, 103, 100, 20);
-		getContentPane().add(txtdogtar);
-		txtdogtar.setColumns(10);
+		dogumtarihi = new JDateChooser();
+		dogumtarihi.setBounds(105, 103, 100, 20);
+		getContentPane().add(dogumtarihi);
+					
 		
 		txtkimlik = new JTextField();
 		txtkimlik.setBounds(105, 138, 110, 20);
@@ -189,15 +247,15 @@ public class MemberRegister extends JFrame {
 		getContentPane().add(txtgsm);
 		txtgsm.setColumns(10);
 		
-		JTextArea textAreaadres = new JTextArea();
-		textAreaadres.setBounds(105, 202, 110, 36);
-		getContentPane().add(textAreaadres);
+		JTextArea txtareadres = new JTextArea();
+		txtareadres.setBounds(105, 202, 110, 36);
+		getContentPane().add(txtareadres);
 		
-		txthasta = new JTextField();
-		txthasta.setToolTipText("varsa hastal\u0131k belirtiniz.");
-		txthasta.setBounds(105, 251, 151, 20);
-		getContentPane().add(txthasta);
-		txthasta.setColumns(10);
+		txtmail = new JTextField();
+		txtmail.setToolTipText("");
+		txtmail.setBounds(105, 251, 151, 20);
+		getContentPane().add(txtmail);
+		txtmail.setColumns(10);
 		
 		JComboBox cmbboxcinsiyet = new JComboBox();
 		cmbboxcinsiyet.setBounds(383, 30, 54, 20);
@@ -240,6 +298,13 @@ public class MemberRegister extends JFrame {
 		txttel1.setColumns(10);
 		txttel1.setBounds(103, 406, 86, 20);
 		getContentPane().add(txttel1);
+		
+		kayittarihi = new JDateChooser();
+		kayittarihi.setBounds(383, 174, 86, 20);
+		getContentPane().add(kayittarihi);
+		
+		
+		
 		
 	}
 }

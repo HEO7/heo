@@ -1,23 +1,36 @@
 package com.heo.sportclub.project.ui;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JPanel;
-import javax.swing.JToolBar;
-import javax.swing.JButton;
+import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
+
+import com.heo.sportclub.project.dao.DbServicessBase;
+import com.heo.sportclub.project.dao.PersonelDAO;
+import com.heo.sportclub.project.models.Personel;
+import com.toedter.calendar.JDateChooser;
 
 public class AddPersonel extends JFrame {
 	private JTextField txtusername;
 	private JTextField txtpassword;
 	private JTextField txtname;
-	private JTextField txtsurname;
+	private JTextField txtsoyad;
 	private JTextField txtphone;
 	private JTextField txtidentify;
+	private JDateChooser baslamatarihi;
+	private Long selecteditemid;
+	private JComboBox cmbboxedu;
+	private JComboBox cmbboxgender;
+	private JTable pertable;
 	
 	public AddPersonel() {
 		
@@ -85,9 +98,31 @@ public class AddPersonel extends JFrame {
 		lblBalamaTarihi.setBounds(10, 430, 103, 14);
 		getContentPane().add(lblBalamaTarihi);
 		
-		JButton btnNewButton = new JButton("KAYDET");
-		btnNewButton.setBounds(173, 494, 89, 23);
-		getContentPane().add(btnNewButton);
+		JButton btnkaydet = new JButton("KAYDET");
+		btnkaydet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				DbServicessBase<Personel> perdao = new DbServicessBase<Personel>();
+				Personel kaydet = new Personel();
+				
+				kaydet.setId(selecteditemid);
+				kaydet.setKullaniciadi(txtusername.getText());
+				kaydet.setSifre(txtpassword.getText());
+				kaydet.setAd(txtname.getText());
+				kaydet.setSoyad(txtsoyad.getText());
+				kaydet.setKimlikno(new Integer(txtidentify.getText().toString()));
+				kaydet.setTelefon(new Integer(txtphone.getText().toString()));
+				kaydet.setCinsiyet(cmbboxgender.getSelectedItem().toString());
+				kaydet.setEgitim(cmbboxedu.getSelectedItem().toString());
+				kaydet.setBaslamatarihi(baslamatarihi.getDate());
+				
+				
+				
+				
+			}
+		});
+		btnkaydet.setBounds(173, 494, 89, 23);
+		getContentPane().add(btnkaydet);
 		
 		txtusername = new JTextField();
 		txtusername.setBounds(117, 8, 103, 20);
@@ -104,10 +139,10 @@ public class AddPersonel extends JFrame {
 		getContentPane().add(txtname);
 		txtname.setColumns(10);
 		
-		txtsurname = new JTextField();
-		txtsurname.setBounds(117, 169, 103, 20);
-		getContentPane().add(txtsurname);
-		txtsurname.setColumns(10);
+		txtsoyad = new JTextField();
+		txtsoyad.setBounds(117, 169, 103, 20);
+		getContentPane().add(txtsoyad);
+		txtsoyad.setColumns(10);
 		
 		txtphone = new JTextField();
 		txtphone.setBounds(117, 211, 103, 20);
@@ -126,6 +161,41 @@ public class AddPersonel extends JFrame {
 		JComboBox cmbboxedu = new JComboBox();
 		cmbboxedu.setBounds(117, 345, 74, 20);
 		getContentPane().add(cmbboxedu);
+		
+		baslamatarihi = new JDateChooser();
+		baslamatarihi.setBounds(134, 427, 86, 20);
+		getContentPane().add(baslamatarihi);
+		
+		JButton btnPersoneller = new JButton("Personeller");
+		btnPersoneller.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				personeltablo();
+			}
+
+			
+		});
+		btnPersoneller.setBounds(10, 494, 89, 23);
+		getContentPane().add(btnPersoneller);
+		
+		
+	}
+	private void personeltablo() {
+		PersonelDAO perdao = new PersonelDAO();
+		List<Personel> liste = perdao.getAllRows(new Personel());
+		String[][] data = new String[liste.size()][9];
+		String[] columns = { "ID", "Ad", "Soyad", "Baþlama Tar.", "TCKN", "Telefon","Eðitim" };
+		for (int i = 0; i < liste.size(); i++) {
+			data[i][0] = String.valueOf(liste.get(i).getId());
+			data[i][1] = liste.get(i).getAd();
+			data[i][2] = liste.get(i).getSoyad();
+			data[i][3] = liste.get(i).getBaslamatarihi().toString();
+			data[i][4] = String.valueOf(liste.get(i).getKimlikno());
+			data[i][5] = String.valueOf(liste.get(i).getTelefon());
+			data[i][6] = liste.get(i).getEgitim().toString();
+			
+		}
+		DefaultTableModel model = new DefaultTableModel(data, columns);
+		pertable.setModel(model);
 		
 	}
 }

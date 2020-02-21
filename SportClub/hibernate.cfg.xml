@@ -14,27 +14,9 @@
    		
    		<property name="hibernate.hbm2ddl.auto">update</property> <!-- create / create-drop / update -->
 		<property name="hibernate.show_sql">true</property> <!-- Show SQL in console -->
-		<mapping class="com.hokumus.course.project.models.CourseUsers"/>
-		<mapping class="com.hokumus.course.project.models.inventory.Inventory"/>
-		<mapping class="com.hokumus.course.project.models.student.Student"/>
-		<mapping class="com.hokumus.course.project.models.management.Courses"/>
-		<mapping class="com.hokumus.course.project.models.management.LessonClass"/>
-		<mapping class="com.hokumus.course.project.models.CourseUsers"/>
-		<mapping class="com.hokumus.course.project.models.management.Courses"/>
-		<mapping class="com.hokumus.course.project.models.management.LessonClass"/>
-		<mapping class="com.hokumus.course.project.models.accounting.Debt"/>
-		<mapping class="com.hokumus.course.project.models.accounting.Bill"/>
-		<mapping class="com.hokumus.course.project.models.teacher.Teacher"/>
-		<mapping class="com.hokumus.course.project.models.management.Groups"/>
-		<mapping class="com.hokumus.course.project.models.management.Days"/>
-		<mapping class="com.hokumus.course.project.models.management.GroupDays"/>
-		<mapping class="com.hokumus.course.project.models.accounting.Incomings"/>
-		<mapping class="com.hokumus.course.project.models.inventory.IronHead"/>
-		<mapping class="com.hokumus.course.project.models.accounting.Expenses"/>
-		<mapping class="com.hokumus.course.project.models.humenresources.Employee"/>
-		<mapping class="com.hokumus.course.project.models.homeworks.Odev"/>
-		<mapping class="com.hokumus.course.project.models.accounting.Purchasings"/>
-		<mapping class="com.hokumus.course.project.models.accounting.Salarys"/>
+		<mapping class="com.heo.sportclub.project.models.Members;"/>
+		<mapping class="com.heo.sportclub.project.models.Personel;"/>
+		
 		
 		
 	</session-factory>

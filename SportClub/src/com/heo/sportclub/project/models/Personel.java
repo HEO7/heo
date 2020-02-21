@@ -1,5 +1,7 @@
 package com.heo.sportclub.project.models;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +25,10 @@ public class Personel extends BaseEntity  {
 	private String soyad;
 	private int telefon;
 	private int kimlikno;
-	private JDateChooser baslamatarihi;
+	private Date baslamatarihi;
+	private String cinsiyet;
+	private String egitim;
+	
 	
 	@Id
 	@SequenceGenerator(name = "seq_personel",allocationSize = 1,sequenceName = "seq_personel")
@@ -77,17 +82,36 @@ public class Personel extends BaseEntity  {
 		this.kimlikno = kimlikno;
 	}
 	@Column(name = "begindate")
-	public JDateChooser getBaslamatarihi() {
+	public Date getBaslamatarihi() {
 		return baslamatarihi;
 	}
-	public void setBaslamatarihi(JDateChooser baslamatarihi) {
+	public void setBaslamatarihi(Date baslamatarihi) {
 		this.baslamatarihi = baslamatarihi;
+	}
+	
+	@Column(name = "gender")
+	public String getCinsiyet() {
+		return cinsiyet;
+	}
+	public void setCinsiyet(String cinsiyet) {
+		this.cinsiyet = cinsiyet;
+	}
+	@Column(name = "education")
+	public String getEgitim() {
+		return egitim;
+	}
+	public void setEgitim(String egitim) {
+		this.egitim = egitim;
 	}
 	@Override
 	public String toString() {
 		return "Personel [id=" + id + ", kullaniciadi=" + kullaniciadi + ", sifre=" + sifre + ", ad=" + ad + ", soyad="
-				+ soyad + ", telefon=" + telefon + ", kimlikno=" + kimlikno + ", baslamatarihi=" + baslamatarihi + "]";
+				+ soyad + ", telefon=" + telefon + ", kimlikno=" + kimlikno + ", baslamatarihi=" + baslamatarihi
+				+ ", cinsiyet=" + cinsiyet + ", egitim=" + egitim + "]";
 	}
+	
+	
+	
 	
 	
 	
