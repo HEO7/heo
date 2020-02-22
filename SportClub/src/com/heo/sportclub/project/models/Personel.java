@@ -23,8 +23,8 @@ public class Personel extends BaseEntity  {
 	private String sifre;
 	private String ad;
 	private String soyad;
-	private int telefon;
-	private int kimlikno;
+	private String telefon;
+	private String kimlikno;
 	private Date baslamatarihi;
 	private String cinsiyet;
 	private String egitim;
@@ -68,17 +68,17 @@ public class Personel extends BaseEntity  {
 		this.soyad = soyad;
 	}
 	@Column(name = "phone")
-	public int getTelefon() {
+	public String getTelefon() {
 		return telefon;
 	}
-	public void setTelefon(int telefon) {
+	public void setTelefon(String telefon) {
 		this.telefon = telefon;
 	}
 	@Column(name = "TCKN")
-	public int getKimlikno() {
+	public String getKimlikno() {
 		return kimlikno;
 	}
-	public void setKimlikno(int kimlikno) {
+	public void setKimlikno(String kimlikno) {
 		this.kimlikno = kimlikno;
 	}
 	@Column(name = "begindate")
@@ -109,6 +109,7 @@ public class Personel extends BaseEntity  {
 				+ soyad + ", telefon=" + telefon + ", kimlikno=" + kimlikno + ", baslamatarihi=" + baslamatarihi
 				+ ", cinsiyet=" + cinsiyet + ", egitim=" + egitim + "]";
 	}
+	
 	
 	
 	

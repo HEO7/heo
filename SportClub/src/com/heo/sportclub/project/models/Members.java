@@ -1,5 +1,6 @@
 package com.heo.sportclub.project.models;
 
+import java.awt.TextArea;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -174,6 +175,8 @@ public class Members extends BaseEntity {
 				+ ", acilad=" + acilad + ", acilsoyad=" + acilsoyad + ", aciltel=" + aciltel + ", program=" + program
 				+ ", uyeliksure=" + uyeliksure + "]";
 	}
+
+	
 	
 	
 	

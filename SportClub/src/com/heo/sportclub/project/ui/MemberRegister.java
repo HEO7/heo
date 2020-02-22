@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -11,11 +13,11 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.heo.sportclub.project.dao.DbServicessBase;
 import com.heo.sportclub.project.models.Members;
+import com.heo.sportclub.project.models.ProgramEnum;
 import com.toedter.calendar.JDateChooser;
 
 public class MemberRegister extends JFrame {
@@ -33,10 +35,7 @@ public class MemberRegister extends JFrame {
 	private JTextField txtad1;
 	private JTextField txtsoyad1;
 	private JTextField txttel1;
-	private JTextArea txtareadres;
-	private JComboBox cmbboxcinsiyet;
-	private JComboBox cmbboxprogramsec;
-	private JComboBox cmbboxuyesure;
+	private JTextField txtadr;
 	
 	
 	public MemberRegister() {
@@ -124,12 +123,12 @@ public class MemberRegister extends JFrame {
 		lblKilo.setBounds(302, 141, 46, 14);
 		getContentPane().add(lblKilo);
 		
-		JLabel lblTarih = new JLabel("Tarih");
-		lblTarih.setForeground(Color.WHITE);
-		lblTarih.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblTarih.setBackground(Color.WHITE);
-		lblTarih.setBounds(302, 177, 46, 14);
-		getContentPane().add(lblTarih);
+		JLabel lblregdate = new JLabel("Tarih");
+		lblregdate.setForeground(Color.WHITE);
+		lblregdate.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblregdate.setBackground(Color.WHITE);
+		lblregdate.setBounds(302, 177, 46, 14);
+		getContentPane().add(lblregdate);
 		
 		JLabel lblProgramSe = new JLabel("Program Se\u00E7");
 		lblProgramSe.setForeground(Color.WHITE);
@@ -170,14 +169,27 @@ public class MemberRegister extends JFrame {
 		lblTelefon.setBounds(21, 409, 46, 14);
 		getContentPane().add(lblTelefon);
 		
+		JComboBox cmbboxuyesure = new JComboBox();
+		cmbboxuyesure.setModel(new DefaultComboBoxModel(new String[] {"1_aylýk", "3_aylýk","6_aylýk","1_yýllýk"}));
+		cmbboxuyesure.setBounds(403, 241, 80, 20);
+		getContentPane().add(cmbboxuyesure);
+		
+		JComboBox cmbboxprogramsec = new JComboBox();
+		cmbboxprogramsec.setBounds(393, 208, 147, 23);
+		getContentPane().add(cmbboxprogramsec);
+		cmbboxprogramsec.setModel(new DefaultComboBoxModel(new String[] {"Program-1", "Program-2","Program-3"}));
+		getContentPane().add(cmbboxprogramsec);
+		
+		JComboBox cmbboxcinsiyet = new JComboBox();
+		cmbboxcinsiyet.setModel(new DefaultComboBoxModel(new String[] {"bay", "bayan"}));
+		cmbboxcinsiyet.setBounds(383, 30, 54, 20);
+		getContentPane().add(cmbboxcinsiyet);
+		
 		JButton btnKaydet = new JButton("KAYDET");
 		btnKaydet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				DbServicessBase<Members> memdao = new DbServicessBase<Members>();
-				DefaultComboBoxModel model = new DefaultComboBoxModel();
-				cmbboxcinsiyet.setModel(model);
-				cmbboxprogramsec.setModel(model);
-				cmbboxuyesure.setModel(model);
 				Members kaydet = new Members();
 				
 				kaydet.setId(selecteditemid);
@@ -186,7 +198,7 @@ public class MemberRegister extends JFrame {
 			    kaydet.setDogumtarihi(dogumtarihi.getDate());
 			    kaydet.setKimlikno(txtkimlik.getText());
 			    kaydet.setGsm(txtgsm.getText());
-			    kaydet.setAdres(txtareadres.getText());
+			    kaydet.setAdres(txtadr.getText());
 			    kaydet.setEmail(txtmail.getText());
 			    kaydet.setCinsiyet(cmbboxcinsiyet.getSelectedItem().toString());
 			    kaydet.setYas(new Integer(txtyas.getText().toString()));
@@ -233,6 +245,10 @@ public class MemberRegister extends JFrame {
 		txtsoyad.setColumns(10);
 		
 		dogumtarihi = new JDateChooser();
+		dogumtarihi.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			}
+		});
 		dogumtarihi.setBounds(105, 103, 100, 20);
 		getContentPane().add(dogumtarihi);
 					
@@ -247,19 +263,13 @@ public class MemberRegister extends JFrame {
 		getContentPane().add(txtgsm);
 		txtgsm.setColumns(10);
 		
-		JTextArea txtareadres = new JTextArea();
-		txtareadres.setBounds(105, 202, 110, 36);
-		getContentPane().add(txtareadres);
-		
 		txtmail = new JTextField();
 		txtmail.setToolTipText("");
 		txtmail.setBounds(105, 251, 151, 20);
 		getContentPane().add(txtmail);
 		txtmail.setColumns(10);
 		
-		JComboBox cmbboxcinsiyet = new JComboBox();
-		cmbboxcinsiyet.setBounds(383, 30, 54, 20);
-		getContentPane().add(cmbboxcinsiyet);
+		
 		
 		txtyas = new JTextField();
 		txtyas.setBounds(383, 66, 54, 20);
@@ -276,14 +286,7 @@ public class MemberRegister extends JFrame {
 		txtkilo.setBounds(383, 138, 54, 20);
 		getContentPane().add(txtkilo);
 		
-		JComboBox cmbboxprogramsec = new JComboBox();
-		cmbboxprogramsec.setBounds(416, 209, 110, 20);
-		getContentPane().add(cmbboxprogramsec);
-		
-		JComboBox cmbboxuyesure = new JComboBox();
-		cmbboxuyesure.setBounds(416, 241, 110, 20);
-		getContentPane().add(cmbboxuyesure);
-		
+			
 		txtad1 = new JTextField();
 		txtad1.setBounds(105, 338, 86, 20);
 		getContentPane().add(txtad1);
@@ -302,9 +305,18 @@ public class MemberRegister extends JFrame {
 		kayittarihi = new JDateChooser();
 		kayittarihi.setBounds(383, 174, 86, 20);
 		getContentPane().add(kayittarihi);
+		getContentPane().add(getTxtadr());
 		
 		
 		
 		
+	}
+	private JTextField getTxtadr() {
+		if (txtadr == null) {
+			txtadr = new JTextField();
+			txtadr.setBounds(105, 199, 110, 41);
+			txtadr.setColumns(10);
+		}
+		return txtadr;
 	}
 }

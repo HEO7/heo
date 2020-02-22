@@ -6,10 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -28,8 +30,8 @@ public class AddPersonel extends JFrame {
 	private JTextField txtidentify;
 	private JDateChooser baslamatarihi;
 	private Long selecteditemid;
-	private JComboBox cmbboxedu;
-	private JComboBox cmbboxgender;
+	
+	
 	private JTable pertable;
 	
 	public AddPersonel() {
@@ -98,6 +100,17 @@ public class AddPersonel extends JFrame {
 		lblBalamaTarihi.setBounds(10, 430, 103, 14);
 		getContentPane().add(lblBalamaTarihi);
 		
+		JComboBox cmbboxgender = new JComboBox();
+		cmbboxgender.setModel(new DefaultComboBoxModel(new String[] {"bay", "bayan"}));
+		cmbboxgender.setBounds(117, 297, 74, 20);
+		getContentPane().add(cmbboxgender);
+		
+		JComboBox cmbboxedu = new JComboBox();
+		cmbboxedu.setModel(new DefaultComboBoxModel(new String[] {"ilkokul", "ortaokul", "lise", "\u00FCniversite", "y.lisans", "doktora"}));
+		cmbboxedu.setBounds(117, 345, 74, 20);
+		getContentPane().add(cmbboxedu);
+		
+		
 		JButton btnkaydet = new JButton("KAYDET");
 		btnkaydet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -110,13 +123,18 @@ public class AddPersonel extends JFrame {
 				kaydet.setSifre(txtpassword.getText());
 				kaydet.setAd(txtname.getText());
 				kaydet.setSoyad(txtsoyad.getText());
-				kaydet.setKimlikno(new Integer(txtidentify.getText().toString()));
-				kaydet.setTelefon(new Integer(txtphone.getText().toString()));
+				kaydet.setKimlikno(txtidentify.getText());
+				kaydet.setTelefon(txtphone.getText());
 				kaydet.setCinsiyet(cmbboxgender.getSelectedItem().toString());
 				kaydet.setEgitim(cmbboxedu.getSelectedItem().toString());
 				kaydet.setBaslamatarihi(baslamatarihi.getDate());
 				
-				
+				if (perdao.save(kaydet)) {
+					JOptionPane.showMessageDialog(AddPersonel.this, "Kayýt Baþarýlý.");
+				}
+				else {
+					JOptionPane.showMessageDialog(AddPersonel.this, "Kayýt Baþarýsýz.");
+				}
 				
 				
 			}
@@ -154,14 +172,7 @@ public class AddPersonel extends JFrame {
 		getContentPane().add(txtidentify);
 		txtidentify.setColumns(10);
 		
-		JComboBox cmbboxgender = new JComboBox();
-		cmbboxgender.setBounds(117, 297, 74, 20);
-		getContentPane().add(cmbboxgender);
-		
-		JComboBox cmbboxedu = new JComboBox();
-		cmbboxedu.setBounds(117, 345, 74, 20);
-		getContentPane().add(cmbboxedu);
-		
+				
 		baslamatarihi = new JDateChooser();
 		baslamatarihi.setBounds(134, 427, 86, 20);
 		getContentPane().add(baslamatarihi);
@@ -169,12 +180,18 @@ public class AddPersonel extends JFrame {
 		JButton btnPersoneller = new JButton("Personeller");
 		btnPersoneller.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				personeltablo();
+				
+				
+				Personels p = new Personels();
+				p.setVisible(true);
+
+				
+				
 			}
 
 			
 		});
-		btnPersoneller.setBounds(10, 494, 89, 23);
+		btnPersoneller.setBounds(10, 494, 103, 23);
 		getContentPane().add(btnPersoneller);
 		
 		
