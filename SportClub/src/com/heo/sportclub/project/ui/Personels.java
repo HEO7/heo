@@ -11,9 +11,13 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import com.heo.sportclub.project.dao.PersonelDAO;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Personels extends JFrame {
 	private JTable pertable;
+	private JButton btnPersonelGetir;
 	
 	public Personels() {
 		
@@ -42,6 +46,7 @@ public class Personels extends JFrame {
 		pertable.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "ID", "Ad", "Soyad", "TCKN", "Telefon", "BaþlaTar.", "Cinsiyet","Eðitim" }) {
 
 		});
+		getContentPane().add(getBtnPersonelGetir());
 	}
 
 	private void personeltablo() {
@@ -64,5 +69,17 @@ public class Personels extends JFrame {
 		DefaultTableModel model = new DefaultTableModel(data, columns);
 		pertable.setModel(model);
 		
+	}
+	private JButton getBtnPersonelGetir() {
+		if (btnPersonelGetir == null) {
+			btnPersonelGetir = new JButton("Personel Getir");
+			btnPersonelGetir.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					personeltablo();
+				}
+			});
+			btnPersonelGetir.setBounds(186, 327, 129, 23);
+		}
+		return btnPersonelGetir;
 	}
 }
