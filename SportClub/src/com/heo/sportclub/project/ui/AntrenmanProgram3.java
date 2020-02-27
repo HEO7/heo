@@ -17,6 +17,9 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
+import java.awt.Toolkit;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class AntrenmanProgram3 extends JFrame {
 
@@ -24,6 +27,7 @@ public class AntrenmanProgram3 extends JFrame {
 	
 
 	public AntrenmanProgram3() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(AntrenmanProgram3.class.getResource("/images/sport-club-logo.jpg")));
 
 		
 		initialize();
@@ -99,6 +103,11 @@ public class AntrenmanProgram3 extends JFrame {
 		});
 		btnYazdr.setBounds(172, 393, 89, 23);
 		getContentPane().add(btnYazdr);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(AntrenmanProgram3.class.getResource("/images/sportclub2.jpg")));
+		lblNewLabel.setBounds(0, 0, 284, 461);
+		getContentPane().add(lblNewLabel);
 
 	}
 	public void printer() {

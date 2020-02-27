@@ -17,6 +17,9 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
+import java.awt.Toolkit;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class AntrenmanProgram extends JFrame {
 
@@ -24,6 +27,7 @@ public class AntrenmanProgram extends JFrame {
 	
 
 	public AntrenmanProgram() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(AntrenmanProgram.class.getResource("/images/sport-club-logo.jpg")));
 
 		
 		initialize();
@@ -38,14 +42,6 @@ public class AntrenmanProgram extends JFrame {
 		getContentPane().setBackground(new Color(0, 153, 153));
 
 		JButton btnProgram = new JButton("Program-1");
-		btnProgram.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			
-				
-			}
-		});
 		btnProgram.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -83,7 +79,6 @@ public class AntrenmanProgram extends JFrame {
 		
 		JTextPane txtprgm1 = new JTextPane();
 		txtprgm1.setText("Squat 3x5\r\nSquat Asistan\u0131 3x8-12\r\nBench Press 3x5\r\nBench Press Asistan\u0131 3x8-12\r\nPendlay Row 3x5\r\nRow Asistan\u0131 3x8-12");
-		txtprgm1.setEditable(false);
 		txtprgm1.setBounds(10, 34, 265, 322);
 		getContentPane().add(txtprgm1);
 		
@@ -95,6 +90,11 @@ public class AntrenmanProgram extends JFrame {
 		});
 		btnYazdr.setBounds(172, 393, 89, 23);
 		getContentPane().add(btnYazdr);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(AntrenmanProgram.class.getResource("/images/sportclub2.jpg")));
+		lblNewLabel.setBounds(0, 0, 284, 461);
+		getContentPane().add(lblNewLabel);
 
 	}
 	public void printle() {

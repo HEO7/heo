@@ -2,14 +2,21 @@ package com.heo.sportclub.project.ui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -34,7 +41,10 @@ public class MainScreen extends JFrame {
 	private Long selecteditemid;
 
 	public MainScreen() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MainScreen.class.getResource("/images/sportclub1.jpg")));
 
+		
+		
 		initialize();
 
 	}
@@ -132,14 +142,27 @@ public class MainScreen extends JFrame {
 		JButton btnAra = new JButton("Ara");
 		btnAra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String ara = txtarama.getText().toString();
-				arama(ara);
-			}
-		});
-		btnAra.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-			}
+				
+					try {
+					Class.forName("org.postgresql.Driver");
+					Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/SCDB","postgres","7777");
+					Statement komut=con.createStatement();
+					ResultSet rs=komut.executeQuery("select * from Members where like members_name");
+					while(rs.next())
+					{
+					for(int i=1;i<2;i++)
+					{
+					JOptionPane.showMessageDialog(null,rs.getString(i));
+					}
+					}
+					} catch (SQLException ex) {
+					ex.printStackTrace();
+					}
+					catch (ClassNotFoundException e2) {
+						e2.printStackTrace();
+					}
+					}
+			
 		});
 		btnAra.setBounds(441, 62, 89, 23);
 		getContentPane().add(btnAra);
@@ -203,6 +226,11 @@ public class MainScreen extends JFrame {
 		});
 		btnyeleriGster.setBounds(314, 486, 101, 23);
 		getContentPane().add(btnyeleriGster);
+		
+		JLabel lblbackground = new JLabel("New label");
+		lblbackground.setIcon(new ImageIcon(MainScreen.class.getResource("/images/sportclub1.jpg")));
+		lblbackground.setBounds(0, 0, 584, 561);
+		getContentPane().add(lblbackground);
 
 	}
 	DefaultTableModel model=new DefaultTableModel();

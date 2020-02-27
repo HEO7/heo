@@ -20,6 +20,8 @@ import com.heo.sportclub.project.dao.DbServicessBase;
 import com.heo.sportclub.project.dao.PersonelDAO;
 import com.heo.sportclub.project.models.Personel;
 import com.toedter.calendar.JDateChooser;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 public class AddPersonel extends JFrame {
 	private JTextField txtusername;
@@ -35,6 +37,7 @@ public class AddPersonel extends JFrame {
 	private JTable pertable;
 	
 	public AddPersonel() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(AddPersonel.class.getResource("/images/sport-club-logo.jpg")));
 		
 		initialize();
 	}
@@ -42,7 +45,7 @@ public class AddPersonel extends JFrame {
 	private void initialize() {
 		setTitle("PERSONEL EKLE");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setBounds(700, 250, 300, 600);
+		setBounds(700, 250, 300, 550);
 		getContentPane().setLayout(null);
 		getContentPane().setBackground(new Color(0, 153, 153));
 		
@@ -139,7 +142,7 @@ public class AddPersonel extends JFrame {
 				
 			}
 		});
-		btnkaydet.setBounds(173, 494, 89, 23);
+		btnkaydet.setBounds(171, 466, 89, 23);
 		getContentPane().add(btnkaydet);
 		
 		txtusername = new JTextField();
@@ -191,8 +194,13 @@ public class AddPersonel extends JFrame {
 
 			
 		});
-		btnPersoneller.setBounds(10, 494, 103, 23);
+		btnPersoneller.setBounds(10, 466, 103, 23);
 		getContentPane().add(btnPersoneller);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(AddPersonel.class.getResource("/images/sportclub2.jpg")));
+		lblNewLabel.setBounds(0, 0, 284, 561);
+		getContentPane().add(lblNewLabel);
 		
 		
 	}

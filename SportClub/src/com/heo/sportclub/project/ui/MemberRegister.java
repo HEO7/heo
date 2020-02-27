@@ -19,6 +19,8 @@ import com.heo.sportclub.project.dao.DbServicessBase;
 import com.heo.sportclub.project.models.Members;
 import com.heo.sportclub.project.models.ProgramEnum;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class MemberRegister extends JFrame {
 	private Long selecteditemid;
@@ -39,6 +41,7 @@ public class MemberRegister extends JFrame {
 	
 	
 	public MemberRegister() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MemberRegister.class.getResource("/images/sport-club-logo.jpg")));
 		
 		initialize();
 		
@@ -306,6 +309,11 @@ public class MemberRegister extends JFrame {
 		kayittarihi.setBounds(383, 174, 86, 20);
 		getContentPane().add(kayittarihi);
 		getContentPane().add(getTxtadr());
+		
+		JLabel lblbackground = new JLabel("New label");
+		lblbackground.setIcon(new ImageIcon(MemberRegister.class.getResource("/images/sportclub1.jpg")));
+		lblbackground.setBounds(0, 0, 584, 572);
+		getContentPane().add(lblbackground);
 		
 		
 		

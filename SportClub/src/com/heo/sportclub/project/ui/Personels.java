@@ -14,12 +14,17 @@ import com.heo.sportclub.project.dao.PersonelDAO;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class Personels extends JFrame {
 	private JTable pertable;
 	private JButton btnPersonelGetir;
+	private JLabel lblbackground;
 	
 	public Personels() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Personels.class.getResource("/images/sport-club-logo.jpg")));
 		
 		initialize();
 	}
@@ -47,6 +52,7 @@ public class Personels extends JFrame {
 
 		});
 		getContentPane().add(getBtnPersonelGetir());
+		getContentPane().add(getLblbackground());
 	}
 
 	private void personeltablo() {
@@ -81,5 +87,13 @@ public class Personels extends JFrame {
 			btnPersonelGetir.setBounds(186, 327, 129, 23);
 		}
 		return btnPersonelGetir;
+	}
+	private JLabel getLblbackground() {
+		if (lblbackground == null) {
+			lblbackground = new JLabel("arkaplan");
+			lblbackground.setIcon(new ImageIcon(Personels.class.getResource("/images/sportclub1.jpg")));
+			lblbackground.setBounds(0, 0, 484, 361);
+		}
+		return lblbackground;
 	}
 }

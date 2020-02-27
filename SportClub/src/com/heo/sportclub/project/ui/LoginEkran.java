@@ -1,30 +1,25 @@
 package com.heo.sportclub.project.ui;
 
-import javax.swing.JFrame;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
+import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-
-import javax.swing.UIManager;
-import java.awt.Toolkit;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import java.awt.event.ActionEvent;
-import java.awt.Window.Type;
 
 public class LoginEkran extends JFrame {
 	private JTextField txtusername;
 	private JTextField txtpassword;
 	
 	public LoginEkran() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\heo\\git\\heo\\SportClub\\img\\icon.jpg"));
-	
+		setIconImage(Toolkit.getDefaultToolkit().getImage(LoginEkran.class.getResource("/images/sport-club-logo.jpg")));
 		
 		initialize();
 		
@@ -38,54 +33,59 @@ public class LoginEkran extends JFrame {
 		setSize(300, 350);
 		setBounds(700, 250, 300, 350);
 		getContentPane().setLayout(null);
-		getContentPane().setFont(new Font("Tahoma", Font.BOLD, 10));
 		
-			
+		JLabel lblkullaniciadi = new JLabel("Kullan\u0131c\u0131 Ad\u0131");
+		lblkullaniciadi.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblkullaniciadi.setBackground(new Color(255, 255, 255));
+		lblkullaniciadi.setForeground(new Color(255, 255, 255));
+		lblkullaniciadi.setBounds(10, 57, 89, 14);
+		getContentPane().add(lblkullaniciadi);
 		
-	
-		getContentPane().setBackground(new Color(0, 153, 153));
+		JLabel lblifre = new JLabel("\u015Eifre");
+		lblifre.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblifre.setForeground(new Color(255, 255, 255));
+		lblifre.setBounds(10, 105, 46, 14);
+		getContentPane().add(lblifre);
 		
-		JButton btnIptal = new JButton("\u0130ptal");
-		btnIptal.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			System.exit(0);
-			}
-		});
-		btnIptal.setBounds(158, 247, 89, 23);
-		getContentPane().add(btnIptal);
+		txtusername = new JTextField();
+		txtusername.setBounds(113, 54, 86, 20);
+		getContentPane().add(txtusername);
+		txtusername.setColumns(10);
 		
-		JButton btnGiris = new JButton("Giri\u015F");
-		btnGiris.addActionListener(new ActionListener() {
+		txtpassword = new JTextField();
+		txtpassword.setBounds(113, 102, 86, 20);
+		getContentPane().add(txtpassword);
+		txtpassword.setColumns(10);
+		
+		JButton btnGiri = new JButton("Giri\u015F");
+		btnGiri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainScreen ms = new MainScreen();
 				ms.setVisible(true);
 			}
 		});
-		btnGiris.setBounds(31, 247, 89, 23);
-		getContentPane().add(btnGiris);
+		btnGiri.setBounds(10, 264, 89, 23);
+		getContentPane().add(btnGiri);
 		
-		JLabel lblusername = new JLabel("Kullan\u0131c\u0131 Ad\u0131");
-		lblusername.setForeground(UIManager.getColor("ToolBar.highlight"));
-		lblusername.setBackground(new Color(204, 51, 0));
-		lblusername.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblusername.setBounds(10, 57, 89, 14);
-		getContentPane().add(lblusername);
+		JButton btnk = new JButton("\u00C7\u0131k\u0131\u015F");
+		btnk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnk.setBounds(185, 264, 89, 23);
+		getContentPane().add(btnk);
 		
-		JLabel lblpassword = new JLabel("\u015Eifre");
-		lblpassword.setForeground(UIManager.getColor("ToolBar.highlight"));
-		lblpassword.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblpassword.setBounds(10, 105, 46, 14);
-		getContentPane().add(lblpassword);
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(LoginEkran.class.getResource("/images/sport-club.jpg")));
+		lblNewLabel.setBounds(0, 0, 284, 311);
+		getContentPane().add(lblNewLabel);
 		
-		txtusername = new JTextField();
-		txtusername.setBounds(118, 55, 111, 20);
-		getContentPane().add(txtusername);
-		txtusername.setColumns(10);
 		
-		txtpassword = new JTextField();
-		txtpassword.setBounds(118, 102, 111, 20);
-		getContentPane().add(txtpassword);
-		txtpassword.setColumns(10);
+		
+		
+		
+		
 		
 		
 	}

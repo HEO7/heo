@@ -17,6 +17,9 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
+import java.awt.Toolkit;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class AntrenmanProgram2 extends JFrame {
 
@@ -24,6 +27,7 @@ public class AntrenmanProgram2 extends JFrame {
 	
 
 	public AntrenmanProgram2() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(AntrenmanProgram2.class.getResource("/images/sport-club-logo.jpg")));
 
 		
 		initialize();
@@ -96,6 +100,11 @@ public class AntrenmanProgram2 extends JFrame {
 		});
 		btnYazdr.setBounds(172, 393, 89, 23);
 		getContentPane().add(btnYazdr);
+		
+		JLabel lblbackground = new JLabel("arkaplan");
+		lblbackground.setIcon(new ImageIcon(AntrenmanProgram2.class.getResource("/images/sportclub2.jpg")));
+		lblbackground.setBounds(0, 0, 284, 461);
+		getContentPane().add(lblbackground);
 
 	}
 	public void printle() {
