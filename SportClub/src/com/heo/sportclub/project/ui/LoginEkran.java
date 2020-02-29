@@ -1,22 +1,27 @@
 package com.heo.sportclub.project.ui;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.Toolkit;
-import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class LoginEkran extends JFrame {
 	private JTextField txtusername;
 	private JTextField txtpassword;
+	private ImageIcon giris;
 	
 	public LoginEkran() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(LoginEkran.class.getResource("/images/sport-club-logo.jpg")));
@@ -30,7 +35,7 @@ public class LoginEkran extends JFrame {
 		
 		setTitle("Spor Salonu Otomasyonu");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(300, 350);
+		setSize(300, 381);
 		setBounds(700, 250, 300, 350);
 		getContentPane().setLayout(null);
 		
@@ -57,7 +62,10 @@ public class LoginEkran extends JFrame {
 		getContentPane().add(txtpassword);
 		txtpassword.setColumns(10);
 		
+		
+		
 		JButton btnGiri = new JButton("Giri\u015F");
+		
 		btnGiri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainScreen ms = new MainScreen();
@@ -78,7 +86,7 @@ public class LoginEkran extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(LoginEkran.class.getResource("/images/sport-club.jpg")));
-		lblNewLabel.setBounds(0, 0, 284, 311);
+		lblNewLabel.setBounds(0, 0, 295, 323);
 		getContentPane().add(lblNewLabel);
 		
 		
