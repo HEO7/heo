@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class Personels extends JFrame {
 	private JTable pertable;
@@ -79,6 +80,7 @@ public class Personels extends JFrame {
 	private JButton getBtnPersonelGetir() {
 		if (btnPersonelGetir == null) {
 			btnPersonelGetir = new JButton("Personel Getir");
+			btnPersonelGetir.setIcon(new ImageIcon(Personels.class.getResource("/images/goster.png")));
 			btnPersonelGetir.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					personeltablo();
@@ -91,6 +93,7 @@ public class Personels extends JFrame {
 	private JLabel getLblbackground() {
 		if (lblbackground == null) {
 			lblbackground = new JLabel("arkaplan");
+			lblbackground.setHorizontalAlignment(SwingConstants.CENTER);
 			lblbackground.setIcon(new ImageIcon(Personels.class.getResource("/images/sportclub1.jpg")));
 			lblbackground.setBounds(0, 0, 484, 361);
 		}

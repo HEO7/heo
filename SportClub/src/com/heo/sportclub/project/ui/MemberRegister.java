@@ -189,6 +189,7 @@ public class MemberRegister extends JFrame {
 		getContentPane().add(cmbboxcinsiyet);
 		
 		JButton btnKaydet = new JButton("KAYDET");
+		btnKaydet.setIcon(new ImageIcon(MemberRegister.class.getResource("/images/save.png")));
 		btnKaydet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -225,16 +226,17 @@ public class MemberRegister extends JFrame {
 				
 			}
 		});
-		btnKaydet.setBounds(38, 504, 89, 23);
+		btnKaydet.setBounds(38, 504, 110, 23);
 		getContentPane().add(btnKaydet);
 		
 		JButton btncýkýs = new JButton("\u00C7IKI\u015E");
+		btncýkýs.setIcon(new ImageIcon(MemberRegister.class.getResource("/images/sign-error-icon.png")));
 		btncýkýs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		btncýkýs.setBounds(194, 504, 89, 23);
+		btncýkýs.setBounds(173, 504, 110, 23);
 		getContentPane().add(btncýkýs);
 		
 		txtad = new JTextField();

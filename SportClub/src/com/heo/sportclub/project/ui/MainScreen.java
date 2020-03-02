@@ -57,15 +57,17 @@ public class MainScreen extends JFrame {
 		getContentPane().setBackground(new Color(0, 153, 153));
 
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 43, 28);
+		menuBar.setBounds(0, 0, 73, 25);
 		getContentPane().add(menuBar);
 
 		JMenu mnMenu = new JMenu("MEN\u00DC");
+		mnMenu.setIcon(new ImageIcon(MainScreen.class.getResource("/images/Menu.png")));
 		mnMenu.setBackground(new Color(0, 153, 153));
 		mnMenu.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		menuBar.add(mnMenu);
 
 		JMenuItem mnýtmuyekayit = new JMenuItem("\u00DCYE KAYIT");
+		mnýtmuyekayit.setIcon(new ImageIcon(MainScreen.class.getResource("/images/AddUser.png")));
 		mnýtmuyekayit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -77,6 +79,7 @@ public class MainScreen extends JFrame {
 		mnMenu.add(mnýtmuyekayit);
 
 		JMenuItem mnýtmPersonelKayt = new JMenuItem("PERSONEL KAYIT");
+		mnýtmPersonelKayt.setIcon(new ImageIcon(MainScreen.class.getResource("/images/personel.png")));
 		mnýtmPersonelKayt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -87,16 +90,20 @@ public class MainScreen extends JFrame {
 		mnMenu.add(mnýtmPersonelKayt);
 
 		JMenuItem mnýtmAntrenmanProgram = new JMenuItem("ANTRENMAN PROGRAMI");
+		mnýtmAntrenmanProgram.setIcon(new ImageIcon(MainScreen.class.getResource("/images/program.png")));
 		mnýtmAntrenmanProgram.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				AntrenmanProgram anap = new AntrenmanProgram();
-				anap.setVisible(true);
+				AntrenProg ap = new AntrenProg();
+				ap.setVisible(true);
+			
+				
 			}
 		});
 		mnMenu.add(mnýtmAntrenmanProgram);
 
 		JMenuItem mnýtmk = new JMenuItem("\u00C7IKI\u015E");
+		mnýtmk.setIcon(new ImageIcon(MainScreen.class.getResource("/images/sign-error-icon.png")));
 		mnýtmk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -112,6 +119,7 @@ public class MainScreen extends JFrame {
 		getContentPane().add(lbluyeler);
 
 		JButton btncýkýs = new JButton("\u00C7IKI\u015E");
+		btncýkýs.setIcon(new ImageIcon(MainScreen.class.getResource("/images/sign-error-icon.png")));
 		btncýkýs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -140,6 +148,7 @@ public class MainScreen extends JFrame {
 		txtarama.setColumns(10);
 
 		JButton btnAra = new JButton("Ara");
+		btnAra.setIcon(new ImageIcon(MainScreen.class.getResource("/images/ara.png")));
 		btnAra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -190,6 +199,7 @@ public class MainScreen extends JFrame {
 		});
 
 		JButton btnSil = new JButton("\u00DCye Sil");
+		btnSil.setIcon(new ImageIcon(MainScreen.class.getResource("/images/sil.png")));
 		btnSil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DbServicessBase<Members> memdao = new DbServicessBase<Members>();
@@ -215,16 +225,17 @@ public class MainScreen extends JFrame {
 
 			}
 		});
-		btnSil.setBounds(194, 486, 89, 23);
+		btnSil.setBounds(174, 486, 130, 23);
 		getContentPane().add(btnSil);
 		
 		JButton btnyeleriGster = new JButton("\u00DCyeleri G\u00F6ster");
+		btnyeleriGster.setIcon(new ImageIcon(MainScreen.class.getResource("/images/goster.png")));
 		btnyeleriGster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				uyetablosu();
 			}
 		});
-		btnyeleriGster.setBounds(314, 486, 101, 23);
+		btnyeleriGster.setBounds(314, 486, 132, 23);
 		getContentPane().add(btnyeleriGster);
 		
 		JLabel lblbackground = new JLabel("New label");

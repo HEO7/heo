@@ -43,28 +43,29 @@ public class LoginEkran extends JFrame {
 		lblkullaniciadi.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblkullaniciadi.setBackground(new Color(255, 255, 255));
 		lblkullaniciadi.setForeground(new Color(255, 255, 255));
-		lblkullaniciadi.setBounds(10, 57, 89, 14);
+		lblkullaniciadi.setBounds(45, 57, 89, 14);
 		getContentPane().add(lblkullaniciadi);
 		
 		JLabel lblifre = new JLabel("\u015Eifre");
 		lblifre.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblifre.setForeground(new Color(255, 255, 255));
-		lblifre.setBounds(10, 105, 46, 14);
+		lblifre.setBounds(45, 105, 46, 14);
 		getContentPane().add(lblifre);
 		
 		txtusername = new JTextField();
-		txtusername.setBounds(113, 54, 86, 20);
+		txtusername.setBounds(130, 54, 86, 20);
 		getContentPane().add(txtusername);
 		txtusername.setColumns(10);
 		
 		txtpassword = new JTextField();
-		txtpassword.setBounds(113, 102, 86, 20);
+		txtpassword.setBounds(130, 102, 86, 20);
 		getContentPane().add(txtpassword);
 		txtpassword.setColumns(10);
 		
 		
 		
-		JButton btnGiri = new JButton("Giri\u015F");
+		JButton btnGiri = new JButton("  Giri\u015F");
+		btnGiri.setIcon(new ImageIcon(LoginEkran.class.getResource("/images/Login-icon.png")));
 		
 		btnGiri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -72,10 +73,11 @@ public class LoginEkran extends JFrame {
 				ms.setVisible(true);
 			}
 		});
-		btnGiri.setBounds(10, 264, 89, 23);
+		btnGiri.setBounds(10, 264, 98, 23);
 		getContentPane().add(btnGiri);
 		
 		JButton btnk = new JButton("\u00C7\u0131k\u0131\u015F");
+		btnk.setIcon(new ImageIcon(LoginEkran.class.getResource("/images/sign-error-icon.png")));
 		btnk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -84,9 +86,19 @@ public class LoginEkran extends JFrame {
 		btnk.setBounds(185, 264, 89, 23);
 		getContentPane().add(btnk);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblUser = new JLabel("");
+		lblUser.setIcon(new ImageIcon(LoginEkran.class.getResource("/images/user1.png")));
+		lblUser.setBounds(10, 44, 36, 40);
+		getContentPane().add(lblUser);
+		
+		JLabel lblPassword = new JLabel("");
+		lblPassword.setIcon(new ImageIcon(LoginEkran.class.getResource("/images/password.png")));
+		lblPassword.setBounds(10, 96, 36, 33);
+		getContentPane().add(lblPassword);
+		
+		JLabel lblNewLabel = new JLabel("arkaplan");
 		lblNewLabel.setIcon(new ImageIcon(LoginEkran.class.getResource("/images/sport-club.jpg")));
-		lblNewLabel.setBounds(0, 0, 295, 323);
+		lblNewLabel.setBounds(0, 0, 284, 311);
 		getContentPane().add(lblNewLabel);
 		
 		

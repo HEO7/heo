@@ -115,6 +115,7 @@ public class AddPersonel extends JFrame {
 		
 		
 		JButton btnkaydet = new JButton("KAYDET");
+		btnkaydet.setIcon(new ImageIcon(AddPersonel.class.getResource("/images/save.png")));
 		btnkaydet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -142,7 +143,7 @@ public class AddPersonel extends JFrame {
 				
 			}
 		});
-		btnkaydet.setBounds(171, 466, 89, 23);
+		btnkaydet.setBounds(144, 466, 116, 23);
 		getContentPane().add(btnkaydet);
 		
 		txtusername = new JTextField();
@@ -151,7 +152,7 @@ public class AddPersonel extends JFrame {
 		txtusername.setColumns(10);
 		
 		txtpassword = new JTextField();
-		txtpassword.setBounds(117, 44, 103, 20);
+		txtpassword.setBounds(117, 47, 103, 20);
 		getContentPane().add(txtpassword);
 		txtpassword.setColumns(10);
 		
@@ -181,6 +182,7 @@ public class AddPersonel extends JFrame {
 		getContentPane().add(baslamatarihi);
 		
 		JButton btnPersoneller = new JButton("Personeller");
+		btnPersoneller.setIcon(new ImageIcon(AddPersonel.class.getResource("/images/personeller.png")));
 		btnPersoneller.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -194,7 +196,7 @@ public class AddPersonel extends JFrame {
 
 			
 		});
-		btnPersoneller.setBounds(10, 466, 103, 23);
+		btnPersoneller.setBounds(10, 466, 125, 23);
 		getContentPane().add(btnPersoneller);
 		
 		JLabel lblNewLabel = new JLabel("New label");
