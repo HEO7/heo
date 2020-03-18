@@ -73,7 +73,7 @@ public class LoginEkran extends JFrame {
 				ms.setVisible(true);
 			}
 		});
-		btnGiri.setBounds(10, 264, 98, 23);
+		btnGiri.setBounds(10, 264, 98, 36);
 		getContentPane().add(btnGiri);
 		
 		JButton btnk = new JButton("\u00C7\u0131k\u0131\u015F");
@@ -83,7 +83,7 @@ public class LoginEkran extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnk.setBounds(185, 264, 89, 23);
+		btnk.setBounds(176, 264, 98, 36);
 		getContentPane().add(btnk);
 		
 		JLabel lblUser = new JLabel("");

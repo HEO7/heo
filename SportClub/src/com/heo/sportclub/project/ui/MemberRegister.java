@@ -226,7 +226,7 @@ public class MemberRegister extends JFrame {
 				
 			}
 		});
-		btnKaydet.setBounds(38, 504, 110, 23);
+		btnKaydet.setBounds(38, 504, 110, 33);
 		getContentPane().add(btnKaydet);
 		
 		JButton btncýkýs = new JButton("\u00C7IKI\u015E");
@@ -236,7 +236,7 @@ public class MemberRegister extends JFrame {
 				dispose();
 			}
 		});
-		btncýkýs.setBounds(173, 504, 110, 23);
+		btncýkýs.setBounds(173, 504, 110, 33);
 		getContentPane().add(btncýkýs);
 		
 		txtad = new JTextField();

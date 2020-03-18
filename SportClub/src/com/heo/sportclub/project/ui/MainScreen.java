@@ -7,12 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
@@ -27,9 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
 import com.heo.sportclub.project.dao.DbServicessBase;
 import com.heo.sportclub.project.dao.MembersDAO;
@@ -39,6 +33,10 @@ public class MainScreen extends JFrame {
 	private JTextField txtarama;
 	private JTable table;
 	private Long selecteditemid;
+	
+	private Statement st;
+	private Connection con;
+	private ResultSet rs;
 
 	public MainScreen() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainScreen.class.getResource("/images/sportclub1.jpg")));
@@ -125,7 +123,7 @@ public class MainScreen extends JFrame {
 				dispose();
 			}
 		});
-		btncýkýs.setBounds(456, 486, 89, 23);
+		btncýkýs.setBounds(456, 486, 118, 33);
 		getContentPane().add(btncýkýs);
 
 		JLabel lbluyeAra = new JLabel("\u00DCye Ara");
@@ -139,8 +137,7 @@ public class MainScreen extends JFrame {
 			@Override
 			public void keyReleased(KeyEvent e) {
 
-				String ara = txtarama.getText().toString();
-				arama(ara);
+				
 			}
 		});
 		txtarama.setBounds(408, 31, 166, 20);
@@ -152,28 +149,16 @@ public class MainScreen extends JFrame {
 		btnAra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-					try {
-					Class.forName("org.postgresql.Driver");
-					Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/SCDB","postgres","7777");
-					Statement komut=con.createStatement();
-					ResultSet rs=komut.executeQuery("select * from Members where like members_name");
-					while(rs.next())
-					{
-					for(int i=1;i<2;i++)
-					{
-					JOptionPane.showMessageDialog(null,rs.getString(i));
-					}
-					}
-					} catch (SQLException ex) {
-					ex.printStackTrace();
-					}
-					catch (ClassNotFoundException e2) {
-						e2.printStackTrace();
-					}
+				
+				
+				
+			
+				
+					
 					}
 			
 		});
-		btnAra.setBounds(441, 62, 89, 23);
+		btnAra.setBounds(441, 62, 89, 33);
 		getContentPane().add(btnAra);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -181,15 +166,6 @@ public class MainScreen extends JFrame {
 		getContentPane().add(scrollPane);
 
 		table = new JTable();
-		table.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			
-
-			}
-
-		});
 
 		scrollPane.setViewportView(table);
 		uyetablosu();
@@ -225,7 +201,7 @@ public class MainScreen extends JFrame {
 
 			}
 		});
-		btnSil.setBounds(174, 486, 130, 23);
+		btnSil.setBounds(174, 486, 130, 33);
 		getContentPane().add(btnSil);
 		
 		JButton btnyeleriGster = new JButton("\u00DCyeleri G\u00F6ster");
@@ -233,9 +209,11 @@ public class MainScreen extends JFrame {
 		btnyeleriGster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				uyetablosu();
+				
+				
 			}
 		});
-		btnyeleriGster.setBounds(314, 486, 132, 23);
+		btnyeleriGster.setBounds(314, 486, 132, 33);
 		getContentPane().add(btnyeleriGster);
 		
 		JLabel lblbackground = new JLabel("New label");
@@ -245,6 +223,8 @@ public class MainScreen extends JFrame {
 
 	}
 	DefaultTableModel model=new DefaultTableModel();
+	
+	
 	private void uyetablosu() {
 		MembersDAO memdao = new MembersDAO();
 		List<Members> liste = memdao.getAllRows(new Members());
@@ -266,13 +246,5 @@ public class MainScreen extends JFrame {
 		DefaultTableModel model = new DefaultTableModel(data, columns);
 		table.setModel(model);
 	}
-
-	public void arama(String ara) {
-
-		TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-		table.setRowSorter(tr);
-
-		tr.setRowFilter(RowFilter.regexFilter(ara));
-
-	}
+	
 }

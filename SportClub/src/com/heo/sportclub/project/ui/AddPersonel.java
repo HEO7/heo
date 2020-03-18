@@ -143,7 +143,7 @@ public class AddPersonel extends JFrame {
 				
 			}
 		});
-		btnkaydet.setBounds(144, 466, 116, 23);
+		btnkaydet.setBounds(144, 466, 116, 34);
 		getContentPane().add(btnkaydet);
 		
 		txtusername = new JTextField();
@@ -196,7 +196,7 @@ public class AddPersonel extends JFrame {
 
 			
 		});
-		btnPersoneller.setBounds(10, 466, 125, 23);
+		btnPersoneller.setBounds(10, 466, 125, 34);
 		getContentPane().add(btnPersoneller);
 		
 		JLabel lblNewLabel = new JLabel("New label");

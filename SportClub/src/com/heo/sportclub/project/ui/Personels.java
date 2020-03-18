@@ -86,7 +86,7 @@ public class Personels extends JFrame {
 					personeltablo();
 				}
 			});
-			btnPersonelGetir.setBounds(186, 327, 129, 23);
+			btnPersonelGetir.setBounds(176, 322, 140, 34);
 		}
 		return btnPersonelGetir;
 	}
