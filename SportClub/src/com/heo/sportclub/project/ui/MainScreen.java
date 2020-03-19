@@ -9,6 +9,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
@@ -29,11 +30,19 @@ import com.heo.sportclub.project.dao.DbServicessBase;
 import com.heo.sportclub.project.dao.MembersDAO;
 import com.heo.sportclub.project.models.Members;
 
+import Database.Baglanti;
+
 public class MainScreen extends JFrame {
 	private JTextField txtarama;
 	private JTable table;
 	private Long selecteditemid;
-	
+
+	DefaultTableModel modelim = new DefaultTableModel();
+
+	Object[] kolonlar = { "ID", "Ad", "Soyad", "Do\u011Fum Tar.", "TCKN", "Telefon", "E-mail", "Cinsiyet", "Tarih",
+			"Program", "Süre" };
+	Object[] satirlar = new Object[12];
+
 	private Statement st;
 	private Connection con;
 	private ResultSet rs;
@@ -41,8 +50,6 @@ public class MainScreen extends JFrame {
 	public MainScreen() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainScreen.class.getResource("/images/sportclub1.jpg")));
 
-		
-		
 		initialize();
 
 	}
@@ -94,8 +101,7 @@ public class MainScreen extends JFrame {
 
 				AntrenProg ap = new AntrenProg();
 				ap.setVisible(true);
-			
-				
+
 			}
 		});
 		mnMenu.add(mnýtmAntrenmanProgram);
@@ -137,7 +143,6 @@ public class MainScreen extends JFrame {
 			@Override
 			public void keyReleased(KeyEvent e) {
 
-				
 			}
 		});
 		txtarama.setBounds(408, 31, 166, 20);
@@ -148,31 +153,47 @@ public class MainScreen extends JFrame {
 		btnAra.setIcon(new ImageIcon(MainScreen.class.getResource("/images/ara.png")));
 		btnAra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				
-				
-			
-				
-					
+
+				modelim.setRowCount(0);
+
+				String ad = txtarama.getText();
+
+				ResultSet rs = null;
+
+				String sql_sorgu = "select * from members where members_name like '" + ad + "%'";
+
+//				System.out.println(sql_sorgu);
+
+				rs = Baglanti.sorgu(sql_sorgu);
+
+				try {
+
+					while (rs.next()) {
+						satirlar[0] = rs.getString("id");
+						satirlar[1] = rs.getString("members_name");
+						satirlar[2] = rs.getString("members_surname");
+						satirlar[3] = rs.getString("birthday");
+						satirlar[4] = rs.getString("identity");
+						satirlar[5] = rs.getString("phone");
+						satirlar[6] = rs.getString("email");
+						satirlar[7] = rs.getString("gender");
+						satirlar[8] = rs.getString("regdate");
+						satirlar[9] = rs.getString("program");
+						satirlar[10] = rs.getString("members_period");
+						modelim.addRow(satirlar);
 					}
-			
+
+				} catch (SQLException e2) {
+					e2.printStackTrace();
+				}
+
+				table.setModel(modelim);
+
+			}
+
 		});
 		btnAra.setBounds(441, 62, 89, 33);
 		getContentPane().add(btnAra);
-
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 135, 564, 316);
-		getContentPane().add(scrollPane);
-
-		table = new JTable();
-
-		scrollPane.setViewportView(table);
-		uyetablosu();
-		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "ID", "Ad", "Soyad", "Do\u011Fum Tar.",
-				"TCKN", "Telefon", "E-mail", "Cinsiyet", "Tarih","Program","Süre" }) {
-
-		});
 
 		JButton btnSil = new JButton("\u00DCye Sil");
 		btnSil.setIcon(new ImageIcon(MainScreen.class.getResource("/images/sil.png")));
@@ -188,12 +209,12 @@ public class MainScreen extends JFrame {
 				sil.setGsm(table.getValueAt(row, 5).toString());
 				sil.setEmail(table.getValueAt(row, 6).toString());
 				sil.setCinsiyet(table.getValueAt(row, 7).toString());
-				
+
 				sil.setProgram(table.getValueAt(row, 9).toString());
 				sil.setUyeliksure(table.getValueAt(row, 10).toString());
 				if (memdao.delete(sil)) {
 					JOptionPane.showMessageDialog(MainScreen.this, "Silindi");
-					uyetablosu();
+//					uyetablosu();
 
 				} else {
 					JOptionPane.showMessageDialog(MainScreen.this, "Silme Baþarýz");
@@ -203,48 +224,81 @@ public class MainScreen extends JFrame {
 		});
 		btnSil.setBounds(174, 486, 130, 33);
 		getContentPane().add(btnSil);
-		
+
 		JButton btnyeleriGster = new JButton("\u00DCyeleri G\u00F6ster");
 		btnyeleriGster.setIcon(new ImageIcon(MainScreen.class.getResource("/images/goster.png")));
 		btnyeleriGster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				uyetablosu();
-				
-				
+
+				ResultSet rs = Baglanti.yap();
+
+				try {
+
+					while (rs.next()) {
+						satirlar[0] = rs.getString("id");
+						satirlar[1] = rs.getString("members_name");
+						satirlar[2] = rs.getString("members_surname");
+						satirlar[3] = rs.getString("birthday");
+						satirlar[4] = rs.getString("identity");
+						satirlar[5] = rs.getString("phone");
+						satirlar[6] = rs.getString("email");
+						satirlar[7] = rs.getString("gender");
+						satirlar[8] = rs.getString("regdate");
+						satirlar[9] = rs.getString("program");
+						satirlar[10] = rs.getString("members_period");
+						modelim.addRow(satirlar);
+					}
+
+				} catch (SQLException e2) {
+					e2.printStackTrace();
+				}
+
+				table.setModel(modelim);
+
 			}
 		});
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 135, 564, 316);
+		getContentPane().add(scrollPane);
+
+		table = new JTable();
+		modelim.setColumnIdentifiers(kolonlar);
+		table.setModel(modelim);
+
+		scrollPane.setViewportView(table);
+
 		btnyeleriGster.setBounds(314, 486, 132, 33);
 		getContentPane().add(btnyeleriGster);
-		
+
 		JLabel lblbackground = new JLabel("New label");
 		lblbackground.setIcon(new ImageIcon(MainScreen.class.getResource("/images/sportclub1.jpg")));
 		lblbackground.setBounds(0, 0, 584, 561);
 		getContentPane().add(lblbackground);
 
 	}
-	DefaultTableModel model=new DefaultTableModel();
-	
-	
-	private void uyetablosu() {
-		MembersDAO memdao = new MembersDAO();
-		List<Members> liste = memdao.getAllRows(new Members());
-		String[][] data = new String[liste.size()][12];
-		String[] columns = { "ID", "Ad", "Soyad", "Do\u011Fum Tar.", "TCKN", "Telefon", "E-mail", "Cinsiyet", "Tarih","Program","Süre" };
-		for (int i = 0; i < liste.size(); i++) {
-			data[i][0] = String.valueOf(liste.get(i).getId());
-			data[i][1] = liste.get(i).getUyeadi();
-			data[i][2] = liste.get(i).getUyesoyad();
-			data[i][3] = liste.get(i).getDogumtarihi().toString();
-			data[i][4] = String.valueOf(liste.get(i).getKimlikno());
-			data[i][5] = String.valueOf(liste.get(i).getGsm());
-			data[i][6] = liste.get(i).getEmail();
-			data[i][7] = liste.get(i).getCinsiyet();
-			data[i][8] = liste.get(i).getKayittarihi().toString();
-			data[i][9] = liste.get(i).getProgram().toString();
-			data[i][10] = liste.get(i).getUyeliksure().toString();
-		}
-		DefaultTableModel model = new DefaultTableModel(data, columns);
-		table.setModel(model);
-	}
-	
+
+	DefaultTableModel model = new DefaultTableModel();
+
+//	private void uyetablosu() {
+//		MembersDAO memdao = new MembersDAO();
+//		List<Members> liste = memdao.getAllRows(new Members());
+//		String[][] data = new String[liste.size()][12];
+//		String[] columns = { "ID", "Ad", "Soyad", "Do\u011Fum Tar.", "TCKN", "Telefon", "E-mail", "Cinsiyet", "Tarih","Program","Süre" };
+//		for (int i = 0; i < liste.size(); i++) {
+//			data[i][0] = String.valueOf(liste.get(i).getId());
+//			data[i][1] = liste.get(i).getUyeadi();
+//			data[i][2] = liste.get(i).getUyesoyad();
+//			data[i][3] = liste.get(i).getDogumtarihi().toString();
+//			data[i][4] = String.valueOf(liste.get(i).getKimlikno());
+//			data[i][5] = String.valueOf(liste.get(i).getGsm());
+//			data[i][6] = liste.get(i).getEmail();
+//			data[i][7] = liste.get(i).getCinsiyet();
+//			data[i][8] = liste.get(i).getKayittarihi().toString();
+//			data[i][9] = liste.get(i).getProgram().toString();
+//			data[i][10] = liste.get(i).getUyeliksure().toString();
+//		}
+//		DefaultTableModel model = new DefaultTableModel(data, columns);
+//		table.setModel(model);
+//	}
+
 }

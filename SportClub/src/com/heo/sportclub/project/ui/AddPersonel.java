@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -20,6 +21,9 @@ import com.heo.sportclub.project.dao.DbServicessBase;
 import com.heo.sportclub.project.dao.PersonelDAO;
 import com.heo.sportclub.project.models.Personel;
 import com.toedter.calendar.JDateChooser;
+
+import Database.Baglanti;
+
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
@@ -119,27 +123,47 @@ public class AddPersonel extends JFrame {
 		btnkaydet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				DbServicessBase<Personel> perdao = new DbServicessBase<Personel>();
-				Personel kaydet = new Personel();
 				
-				kaydet.setId(selecteditemid);
-				kaydet.setKullaniciadi(txtusername.getText());
-				kaydet.setSifre(txtpassword.getText());
-				kaydet.setAd(txtname.getText());
-				kaydet.setSoyad(txtsoyad.getText());
-				kaydet.setKimlikno(txtidentify.getText());
-				kaydet.setTelefon(txtphone.getText());
-				kaydet.setCinsiyet(cmbboxgender.getSelectedItem().toString());
-				kaydet.setEgitim(cmbboxedu.getSelectedItem().toString());
-				kaydet.setBaslamatarihi(baslamatarihi.getDate());
 				
-				if (perdao.save(kaydet)) {
-					JOptionPane.showMessageDialog(AddPersonel.this, "Kayýt Baþarýlý.");
-				}
-				else {
-					JOptionPane.showMessageDialog(AddPersonel.this, "Kayýt Baþarýsýz.");
-				}
+				String ad,soyad,telefon,tckn,cinsiyet,egitim,bastarih,sql_sorgu;
 				
+				
+				ad = txtname.getText();
+				soyad = txtsoyad.getText();
+				telefon = txtphone.getText();
+				tckn = txtidentify.getText();
+				cinsiyet = cmbboxgender.getSelectedItem().toString();
+				egitim = cmbboxedu.getSelectedItem().toString(); 
+				bastarih = baslamatarihi.getDateFormatString();
+				
+				sql_sorgu = "INSERT INTO personel(id,name,surname,phone,tckn,gender,education,begindate) VALUES ("+
+							ad + ",'" + soyad + "'," + "'" + telefon + "'," +"'"+ tckn + "'," + "'"+cinsiyet + "'," +"'"+ egitim+"'" + ",'" + bastarih + "')" ;
+				
+				Baglanti.ekle(sql_sorgu);
+//				System.out.println(sql_sorgu);
+				
+				
+//				DbServicessBase<Personel> perdao = new DbServicessBase<Personel>();
+//				Personel kaydet = new Personel();
+//				
+//				kaydet.setId(selecteditemid);
+//				kaydet.setKullaniciadi(txtusername.getText());
+//				kaydet.setSifre(txtpassword.getText());
+//				kaydet.setAd(txtname.getText());
+//				kaydet.setSoyad(txtsoyad.getText());
+//				kaydet.setKimlikno(txtidentify.getText());
+//				kaydet.setTelefon(txtphone.getText());
+//				kaydet.setCinsiyet(cmbboxgender.getSelectedItem().toString());
+//				kaydet.setEgitim(cmbboxedu.getSelectedItem().toString());
+//				kaydet.setBaslamatarihi(baslamatarihi.getDate());
+//				
+//				if (perdao.save(kaydet)) {
+//					JOptionPane.showMessageDialog(AddPersonel.this, "Kayýt Baþarýlý.");
+//				}
+//				else {
+//					JOptionPane.showMessageDialog(AddPersonel.this, "Kayýt Baþarýsýz.");
+//				}
+//				
 				
 			}
 		});
