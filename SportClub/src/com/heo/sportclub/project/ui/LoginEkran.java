@@ -18,6 +18,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+
+
 public class LoginEkran extends JFrame {
 	private JTextField txtusername;
 	private JTextField txtpassword;
@@ -85,6 +87,19 @@ public class LoginEkran extends JFrame {
 		});
 		btnk.setBounds(176, 264, 98, 36);
 		getContentPane().add(btnk);
+		
+		JButton btnnodb = new JButton("NoDb");
+		btnnodb.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				NoDbmain nd = new NoDbmain();
+				nd.setVisible(true);
+				
+			}
+		});
+		btnnodb.setIcon(new ImageIcon(LoginEkran.class.getResource("/images/nodb.png")));
+		btnnodb.setBounds(92, 228, 98, 36);
+		getContentPane().add(btnnodb);
 		
 		JLabel lblUser = new JLabel("");
 		lblUser.setIcon(new ImageIcon(LoginEkran.class.getResource("/images/user1.png")));

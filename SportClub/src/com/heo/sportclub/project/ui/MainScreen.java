@@ -43,9 +43,7 @@ public class MainScreen extends JFrame {
 			"Program", "Süre" };
 	Object[] satirlar = new Object[12];
 
-	private Statement st;
-	private Connection con;
-	private ResultSet rs;
+	
 
 	public MainScreen() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainScreen.class.getResource("/images/sportclub1.jpg")));
@@ -98,9 +96,12 @@ public class MainScreen extends JFrame {
 		mnýtmAntrenmanProgram.setIcon(new ImageIcon(MainScreen.class.getResource("/images/program.png")));
 		mnýtmAntrenmanProgram.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				Tabmenu tm = new Tabmenu();
+				tm.setVisible(true);
 
-				AntrenProg ap = new AntrenProg();
-				ap.setVisible(true);
+			//	AntrenProg ap = new AntrenProg();
+			//	ap.setVisible(true);
 
 			}
 		});
@@ -154,40 +155,7 @@ public class MainScreen extends JFrame {
 		btnAra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				modelim.setRowCount(0);
-
-				String ad = txtarama.getText();
-
-				ResultSet rs = null;
-
-				String sql_sorgu = "select * from members where members_name like '" + ad + "%'";
-
-//				System.out.println(sql_sorgu);
-
-				rs = Baglanti.sorgu(sql_sorgu);
-
-				try {
-
-					while (rs.next()) {
-						satirlar[0] = rs.getString("id");
-						satirlar[1] = rs.getString("members_name");
-						satirlar[2] = rs.getString("members_surname");
-						satirlar[3] = rs.getString("birthday");
-						satirlar[4] = rs.getString("identity");
-						satirlar[5] = rs.getString("phone");
-						satirlar[6] = rs.getString("email");
-						satirlar[7] = rs.getString("gender");
-						satirlar[8] = rs.getString("regdate");
-						satirlar[9] = rs.getString("program");
-						satirlar[10] = rs.getString("members_period");
-						modelim.addRow(satirlar);
-					}
-
-				} catch (SQLException e2) {
-					e2.printStackTrace();
-				}
-
-				table.setModel(modelim);
+				
 
 			}
 
@@ -214,7 +182,7 @@ public class MainScreen extends JFrame {
 				sil.setUyeliksure(table.getValueAt(row, 10).toString());
 				if (memdao.delete(sil)) {
 					JOptionPane.showMessageDialog(MainScreen.this, "Silindi");
-//					uyetablosu();
+					uyetablosu();
 
 				} else {
 					JOptionPane.showMessageDialog(MainScreen.this, "Silme Baþarýz");
@@ -279,26 +247,26 @@ public class MainScreen extends JFrame {
 
 	DefaultTableModel model = new DefaultTableModel();
 
-//	private void uyetablosu() {
-//		MembersDAO memdao = new MembersDAO();
-//		List<Members> liste = memdao.getAllRows(new Members());
-//		String[][] data = new String[liste.size()][12];
-//		String[] columns = { "ID", "Ad", "Soyad", "Do\u011Fum Tar.", "TCKN", "Telefon", "E-mail", "Cinsiyet", "Tarih","Program","Süre" };
-//		for (int i = 0; i < liste.size(); i++) {
-//			data[i][0] = String.valueOf(liste.get(i).getId());
-//			data[i][1] = liste.get(i).getUyeadi();
-//			data[i][2] = liste.get(i).getUyesoyad();
-//			data[i][3] = liste.get(i).getDogumtarihi().toString();
-//			data[i][4] = String.valueOf(liste.get(i).getKimlikno());
-//			data[i][5] = String.valueOf(liste.get(i).getGsm());
-//			data[i][6] = liste.get(i).getEmail();
-//			data[i][7] = liste.get(i).getCinsiyet();
-//			data[i][8] = liste.get(i).getKayittarihi().toString();
-//			data[i][9] = liste.get(i).getProgram().toString();
-//			data[i][10] = liste.get(i).getUyeliksure().toString();
-//		}
-//		DefaultTableModel model = new DefaultTableModel(data, columns);
-//		table.setModel(model);
-//	}
+	private void uyetablosu() {
+		MembersDAO memdao = new MembersDAO();
+		List<Members> liste = memdao.getAllRows(new Members());
+		String[][] data = new String[liste.size()][12];
+		String[] columns = { "ID", "Ad", "Soyad", "Do\u011Fum Tar.", "TCKN", "Telefon", "E-mail", "Cinsiyet", "Tarih","Program","Süre" };
+		for (int i = 0; i < liste.size(); i++) {
+			data[i][0] = String.valueOf(liste.get(i).getId());
+			data[i][1] = liste.get(i).getUyeadi();
+			data[i][2] = liste.get(i).getUyesoyad();
+			data[i][3] = liste.get(i).getDogumtarihi().toString();
+			data[i][4] = String.valueOf(liste.get(i).getKimlikno());
+			data[i][5] = String.valueOf(liste.get(i).getGsm());
+			data[i][6] = liste.get(i).getEmail();
+			data[i][7] = liste.get(i).getCinsiyet();
+			data[i][8] = liste.get(i).getKayittarihi().toString();
+			data[i][9] = liste.get(i).getProgram().toString();
+			data[i][10] = liste.get(i).getUyeliksure().toString();
+		}
+		DefaultTableModel model = new DefaultTableModel(data, columns);
+		table.setModel(model);
+	}
 
 }

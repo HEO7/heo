@@ -31,19 +31,20 @@ public class AntrenProg extends JFrame  {
 		
 	
 		    
-		   ta1 = new JTextArea();
-		   ta1.setText("Inchline Bench Press \r\nInchline Dumbell Fly \r\nDumbell Bench Press\r\nDumbell Curl\r\nConcentration Culr");
-		   ta1.setFont(new Font("Tahoma", Font.BOLD, 10));
-		   ta1.setLocation(10, 11);
-		    ta1.setSize(349, 217);
+		     ta1 = new JTextArea();
+		     ta1.setText("Inchline Bench Press \r\nInchline Dumbell Fly \r\nDumbell Bench Press\r\nDumbell Curl\r\nConcentration Culr");
+		     ta1.setFont(new Font("Tahoma", Font.BOLD, 10));
+		     ta1.setBounds(10, 11, 325, 206);
 		     ta2 = new JTextArea();
 		     ta2.setText("Wide Grid Front Lat Pull Down\r\nStraight Arm Pulldown\r\nOne Arm Dumbell Rowing\r\nDumbell Press \r\nBent Over Dumbbell Lateral Raise \r\nFront Dumbell Raise");
 		     ta2.setFont(new Font("Tahoma", Font.BOLD, 10));
-		     ta2.setBounds(10, 11, 349, 217);
+		     ta2.setBounds(10, 11, 325, 206);
 		     ta3 = new JTextArea();
 		     ta3.setText("Triceps Pushdowns(Rope Attachment)\r\nDumbell French\r\nLeg Press\r\nHamstring Curl\r\nLeg Extension");
 		     ta3.setFont(new Font("Tahoma", Font.BOLD, 10));
-		     ta3.setBounds(10, 11, 349, 217);
+		     ta3.setBounds(10, 11, 325, 206);
+		     
+		     
 		    
 		    JPanel p1=new JPanel();
 		    JPanel p2=new JPanel();
@@ -56,7 +57,7 @@ public class AntrenProg extends JFrame  {
 		    p3.add(ta3);
 		    
 		    JTabbedPane tp=new JTabbedPane();
-		    tp.setBounds(0,0,374,267);  
+		    tp.setBounds(10,11,350,256);  
 		    tp.add("Program-1",p1);  
 		    tp.add("Program-2",p2);  
 		    tp.add("Program-3",p3);    
